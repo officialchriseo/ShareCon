@@ -1,0 +1,45 @@
+<resources>
+
+    <!-- Base application theme. -->
+
+        <!-- Base application theme. -->
+        <style name="AppTheme.Base" parent="Theme.AppCompat.Light.NoActionBar">
+            <!-- Customize your theme here. -->
+            <item name="colorPrimary">#3F51B5</item>
+            <!-- Light Indigo -->
+            <item name="colorPrimaryDark">#3949AB</item>
+            <!-- Dark Indigo -->
+            <item name="colorAccent">#00B0FF</item>
+            <!-- Blue -->
+        </style>
+        <style name="AppTheme" parent="AppTheme.Base"></style>
+
+    <style name="MaterialDialogSheet" parent="@android:style/Theme.Dialog">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowAnimationStyle">@style/MaterialDialogSheetAnimation</item>
+    </style>
+
+
+
+    <style name="MaterialDialogSheetAnimation">
+        <item name="android:windowEnterAnimation">@animator/popup_show</item>
+        <item name="android:windowExitAnimation">@animator/popup_hide</item>
+    </style>
+
+    <style name="collapsed_title">
+        <item name="android:text">ShareConssss</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">#fff</item>
+    </style>
+
+    <style name="expanded_title">
+        <item name="android:textSize">0sp</item>
+        <item name="android:textColor">@android:color/transparent</item>
+    </style>
+
+</resources>

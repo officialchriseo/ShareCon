@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">ShareCon</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_share_resources">ShareResources</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="barcode_scan_instruction">Scan this code by DiveShare to receive</string>
+    <string name="appbar_scrolling_view_behavior" translatable="false">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_main2">Main2Activity</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="barcode_conversion">QR Code</string>
+    <string name="action_call">Call</string>
+    <string name="action_send">Send</string>
+    <string name="action_details">Details</string>
+</resources>
