@@ -23,12 +23,11 @@ import ng.com.blogspot.httpofficialceo.sharecon.model.Contacts;
 public class BarCodeActivity extends AppCompatActivity {
 
     ArrayList<String> selectedItem;
-
-    private TextView contactName, contactNumber;
     ArrayList<Contacts> contacts = new ArrayList<>();
     ImageView barcodePic;
     Button conv_butt;
     String text2Qr;
+    private TextView contactName, contactNumber;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,16 +52,15 @@ public class BarCodeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 barcodePic.setVisibility(View.VISIBLE);
-                text2Qr = contactName.getText().toString() + "\n" + contactNumber.getText().toString();
+                text2Qr = contactNumber.getText().toString();
                 MultiFormatWriter multiFormatWriter = new MultiFormatWriter();
 
                 try {
-                    BitMatrix bitMatrix = multiFormatWriter.encode(text2Qr, BarcodeFormat.QR_CODE, 200,200);
+                    BitMatrix bitMatrix = multiFormatWriter.encode(text2Qr, BarcodeFormat.QR_CODE, 200, 200);
                     BarcodeEncoder encoder = new BarcodeEncoder();
                     Bitmap bitmap = encoder.createBitmap(bitMatrix);
                     barcodePic.setImageBitmap(bitmap);
-                }
-                catch (WriterException e){
+                } catch (WriterException e) {
                     e.printStackTrace();
                 }
             }
@@ -71,11 +69,10 @@ public class BarCodeActivity extends AppCompatActivity {
 
         getIntents();
 
-        
 
     }
 
-    private void getIntents(){
+    private void getIntents() {
         Intent myIntent = getIntent();
 
         String name = myIntent.getStringExtra("CONTACT_NAME");
@@ -84,4 +81,5 @@ public class BarCodeActivity extends AppCompatActivity {
         contactName.setText(name);
         contactNumber.setText(number);
     }
+
 }

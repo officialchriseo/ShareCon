@@ -45,8 +45,8 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.ViewHo
     public List<Contacts> cont;
     Contacts contacts;
     boolean checked = false;
-   // private Toast myToast;
-   // ContactAdapterListener listener;
+    // private Toast myToast;
+    // ContactAdapterListener listener;
     View vv;
     private LayoutInflater layoutInflater;
     private Context mContext;
@@ -56,11 +56,10 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.ViewHo
     private boolean reverseAllAnimations = false;
 
 
-
     public ContactsAdapter(LayoutInflater inflater, List<Contacts> items) {
         this.layoutInflater = inflater;
         this.cont = items;
-       // this.listener = listener;
+        // this.listener = listener;
         this.arraylist = new ArrayList<Contacts>();
         this.arraylist.addAll(cont);
         selectedItems = new SparseBooleanArray();
@@ -90,8 +89,8 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.ViewHo
 
     }
 
-    private void applyProflePicture(ViewHolder holder, Contacts contacts){
-        if (!TextUtils.isEmpty(contacts.getPicture())){
+    private void applyProflePicture(ViewHolder holder, Contacts contacts) {
+        if (!TextUtils.isEmpty(contacts.getPicture())) {
             Glide.with(mContext).load(contacts.getPicture())
                     .thumbnail(0.5f)
                     .crossFade()
@@ -101,7 +100,7 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.ViewHo
 
             holder.profileImage.setColorFilter(null);
             holder.iconText.setVisibility(View.GONE);
-        }else{
+        } else {
             holder.profileImage.setImageResource(R.drawable.bg_circle);
             // holder.profileImage.setColorFilter(contacts.getColor());
             holder.iconText.setVisibility(View.VISIBLE);
@@ -115,7 +114,6 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.ViewHo
     }
 
 
-
     @Override
     public int getItemCount() {
         return cont.size();
@@ -125,11 +123,11 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.ViewHo
         public TextView title, iconText;
         public TextView phone;
         public CircleImageView profileImage;
-        private TextView sendAction;
         public RelativeLayout iconContainer, iconBack, iconFront;
         public LinearLayout contact_select_layout;
         public LinearLayout contactContainer;
         public CheckBox contactsCheckBox;
+        private TextView sendAction;
 
 
         public ViewHolder(final View itemView) {
@@ -145,7 +143,6 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.ViewHo
             contactContainer = (LinearLayout) itemView.findViewById(R.id.message_container);
             contactsCheckBox = (CheckBox) itemView.findViewById(R.id.contacts_checkbox);
             itemView.setOnLongClickListener(this);
-            // contact_select_layout = (LinearLayout) itemView.findViewById(R.id.contact_select_layout);
 
             iconContainer.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -185,7 +182,7 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.ViewHo
 
                     alertDialog.setNegativeButton("RETURN", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
-                           Toasty.info(view.getContext(), "Action aborted", Toast.LENGTH_SHORT, true).show();
+                            Toasty.info(view.getContext(), "Action aborted", Toast.LENGTH_SHORT, true).show();
                             dialog.dismiss();
                         }
                     });
@@ -193,8 +190,6 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.ViewHo
 
                 }
             });
-
-
 
 
             contactContainer.setOnLongClickListener(new View.OnLongClickListener() {
@@ -237,8 +232,6 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.ViewHo
             });
 
 
-
-
         }
 
         @Override
@@ -247,21 +240,12 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.ViewHo
             contactsCheckBox.setVisibility(View.VISIBLE);
             contactsCheckBox.setChecked(true);
             sendAction.setVisibility(View.GONE);
-           // listener.onRowLongClicked(getAdapterPosition());
+            // listener.onRowLongClicked(getAdapterPosition());
             itemView.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS);
             return true;
         }
     }
 
-//    public interface ContactAdapterListener {
-//        void onIconClicked(int position);
-//
-//        void onIconVertClicked(int position);
-//
-//        void onMessageRowClicked(int position);
-//
-//        void onRowLongClicked(int position);
-//    }
 
 
 }

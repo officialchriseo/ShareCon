@@ -21,8 +21,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".BarCodeActivity" />
-        <activity android:name=".DecryptionActivity" />
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".DecryptionActivity"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar"/>
+        <activity android:name=".MainActivity"/>
+
+
     </application>
 
 </manifest>

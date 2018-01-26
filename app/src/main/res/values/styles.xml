@@ -12,6 +12,7 @@
             <item name="colorAccent">#00B0FF</item>
             <!-- Blue -->
         </style>
+
         <style name="AppTheme" parent="AppTheme.Base"></style>
 
     <style name="MaterialDialogSheet" parent="@android:style/Theme.Dialog">

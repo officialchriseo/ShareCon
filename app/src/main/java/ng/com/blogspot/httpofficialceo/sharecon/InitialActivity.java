@@ -5,10 +5,16 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
+
+import es.dmoral.toasty.Toasty;
 
 public class InitialActivity extends Activity {
 
@@ -20,6 +26,7 @@ public class InitialActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_initial);
+        final Activity activity = this;
 
         CollapsingToolbarLayout collapsingToolbar =
                 (CollapsingToolbarLayout) findViewById(R.id.first_collapsing_toolbar);
@@ -43,8 +50,15 @@ public class InitialActivity extends Activity {
         recieveResource.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                myIntent = new Intent(InitialActivity.this, DecryptionActivity.class);
-                startActivity(myIntent);
+
+                IntentIntegrator intentIntegrator = new IntentIntegrator(activity);
+                intentIntegrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE_TYPES);
+                intentIntegrator.setPrompt("Please hold over a QR code to scan");
+                intentIntegrator.setCameraId(0);
+                intentIntegrator.setBeepEnabled(true);
+                intentIntegrator.setBarcodeImageEnabled(false);
+                intentIntegrator.initiateScan();
+
             }
         });
 
@@ -77,5 +91,27 @@ public class InitialActivity extends Activity {
             }
         });
         alertDialog.show();
+    }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+
+        if (result != null) {
+            if (result.getContents() == null) {
+                Toasty.error(this, "Scanning cancelled", Toast.LENGTH_LONG, true).show();
+            } else {
+                Intent addContact = new Intent(Intent.ACTION_INSERT);
+                addContact.setType(ContactsContract.Contacts.CONTENT_TYPE);
+                addContact.putExtra(ContactsContract.Intents.Insert.PHONE, result.getContents());
+                startActivity(addContact);
+                // Toasty.info(this, result.getContents(), Toast.LENGTH_LONG).show();
+            }
+        } else {
+
+            super.onActivityResult(requestCode, resultCode, data);
+        }
     }
 }
