@@ -10,6 +10,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.util.SparseBooleanArray;
@@ -23,15 +24,10 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
-
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-
 import java.util.ArrayList;
 import java.util.List;
-
-
 import de.hdodenhof.circleimageview.CircleImageView;
 import es.dmoral.toasty.Toasty;
 import ng.com.blogspot.httpofficialceo.sharecon.BarCodeActivity;
@@ -107,11 +103,7 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.ViewHo
         }
     }
 
-    private void resetIconYAxis(View view) {
-        if (view.getRotationY() != 0) {
-            view.setRotationY(0);
-        }
-    }
+
 
 
     @Override
@@ -127,7 +119,8 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.ViewHo
         public LinearLayout contact_select_layout;
         public LinearLayout contactContainer;
         public CheckBox contactsCheckBox;
-        private TextView sendAction;
+        private CardView contactCard;
+        private ImageView sendAction;
 
 
         public ViewHolder(final View itemView) {
@@ -138,7 +131,7 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.ViewHo
             profileImage = (CircleImageView) itemView.findViewById(R.id.icon_profile);
             iconText = (TextView) itemView.findViewById(R.id.icon_text);
             iconFront = (RelativeLayout) itemView.findViewById(R.id.icon_front);
-            sendAction = (TextView) itemView.findViewById(R.id.sendText);
+            sendAction = (ImageView) itemView.findViewById(R.id.sendText);
             iconContainer = (RelativeLayout) itemView.findViewById(R.id.icon_container);
             contactContainer = (LinearLayout) itemView.findViewById(R.id.message_container);
             contactsCheckBox = (CheckBox) itemView.findViewById(R.id.contacts_checkbox);
@@ -190,6 +183,7 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.ViewHo
 
                 }
             });
+
 
 
             contactContainer.setOnLongClickListener(new View.OnLongClickListener() {
@@ -245,6 +239,7 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.ViewHo
             return true;
         }
     }
+
 
 
 

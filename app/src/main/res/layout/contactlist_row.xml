@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
@@ -10,6 +12,8 @@
     android:paddingBottom="@dimen/padding_list_row"
     android:paddingLeft="?listPreferredItemPaddingLeft"
     android:paddingRight="?listPreferredItemPaddingRight"
+    android:paddingStart="?listPreferredItemPaddingLeft"
+    android:paddingEnd="?listPreferredItemPaddingRight"
     android:paddingTop="@dimen/padding_list_row">
 
     <LinearLayout
@@ -19,7 +23,9 @@
         android:clickable="true"
         android:orientation="vertical"
         android:paddingLeft="72dp"
-        android:paddingRight="@dimen/padding_list_row">
+        android:paddingRight="@dimen/padding_list_row"
+        android:paddingStart="72dp"
+        android:paddingEnd="@dimen/padding_list_row">
 
         <TextView
             android:id="@+id/name"
@@ -84,19 +90,16 @@
         android:layout_alignParentEnd="true"
         android:visibility="gone" />
 
-    <TextView
+    <ImageView
         android:id="@+id/sendText"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_alignParentBottom="true"
-        android:textSize="15sp"
-        android:textStyle="bold|italic"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:text="@string/action_send"/>
+        android:src="@drawable/ic_send_black_24dp"/>
 
 </RelativeLayout>
-
 
 
 

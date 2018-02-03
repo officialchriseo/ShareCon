@@ -3,7 +3,9 @@ package ng.com.blogspot.httpofficialceo.sharecon;
 import android.Manifest;
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.content.res.TypedArray;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -19,9 +21,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.stone.vega.library.VegaLayoutManager;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import ng.com.blogspot.httpofficialceo.sharecon.adapter.ContactsAdapter;
 import ng.com.blogspot.httpofficialceo.sharecon.helper.DividerItemDecoration;
 import ng.com.blogspot.httpofficialceo.sharecon.model.Contacts;
@@ -34,6 +39,7 @@ public class ContactsFragment extends Fragment {
     ArrayList<Contacts> selectUsers;
     ContactsAdapter adapter;
     private RecyclerView recyclerView;
+    private CircleImageView icon_image;
     private RecyclerView.LayoutManager layoutManager;
     // ContactsAdapter.ContactAdapterListener listener;
     private ActionMode actionMode;
@@ -45,8 +51,11 @@ public class ContactsFragment extends Fragment {
 
         View rootView = inflater.inflate(R.layout.fragment_contacts, container, false);
         recyclerView = (RecyclerView) rootView.findViewById(R.id.contacts_list_recycler_view);
+        icon_image = (CircleImageView) rootView.findViewById(R.id.icon_profile);
         recyclerView.setHasFixedSize(true);
         recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), LinearLayoutManager.VERTICAL));
+
+
 
         recyclerView.setLayoutManager(layoutManager);
         selectUsers = new ArrayList<Contacts>();
@@ -90,6 +99,19 @@ public class ContactsFragment extends Fragment {
                 Toast.makeText(getActivity(), "Permission needed to display names.", Toast.LENGTH_SHORT).show();
             }
         }
+    }
+
+    private int getRandomMaterialColor(String typeColor) {
+        int returnColor = Color.GRAY;
+        int arrayId = getResources().getIdentifier("mdcolor_" + typeColor, "array", getActivity().getPackageName());
+
+        if (arrayId != 0) {
+            TypedArray colors = getResources().obtainTypedArray(arrayId);
+            int index = (int) (Math.random() * colors.length());
+            returnColor = colors.getColor(index, Color.GRAY);
+            colors.recycle();
+        }
+        return returnColor;
     }
 
 

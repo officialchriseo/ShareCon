@@ -18,9 +18,8 @@ import es.dmoral.toasty.Toasty;
 
 public class InitialActivity extends Activity {
 
-    private Button shareResource, recieveResource, sendApp;
-
     Intent myIntent;
+    private Button shareResource, recieveResource, sendApp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
